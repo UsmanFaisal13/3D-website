@@ -71,8 +71,8 @@ export default function BB8Model({ startX = 5, moveIn = true }) {
     <primitive
       object={scene}
       ref={ref}
-      scale={6.2}
-      position={[positionX.current, -0.8, 0]}
+      scale={6}
+      position={[positionX.current, -0.6, 0]}
     />
   );
 }
