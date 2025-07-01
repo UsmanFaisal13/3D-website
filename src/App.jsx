@@ -1,23 +1,35 @@
 import { Canvas } from "@react-three/fiber";
 import BB8Model from "./components/modal.jsx";
 import { Text } from "@react-three/drei";
-import { Html } from "@react-three/drei";
+import { Html, ScrollControls, Scroll } from "@react-three/drei";
+import { Github, Linkedin, Mail } from "lucide-react"
 
 
 export default function App() {
   return (
-    <div className="bg-orange-50 min-h-screen text-white">
-      <header className="bg-[#EEA326] flex justify-end px-8 py-4"><nav>
-        <ul className="flex space-x-4">
-          <li><a href="#" className="hover:underline">Github</a></li>
-          <li><a href="#" className="hover:underline">Linkedin</a></li>
-          <li><a href="#" className="hover:underline">Contact</a></li>
-        </ul>
-      </nav></header>
+    <div className="bg-orange-50 min-h-screen text-white font-light">
+      <header className="bg-[#EEA326] flex justify-end px-8 py-4"> <div className="flex space-x-4 text-white">
+            <a href="#" className="hover:text-orange-200 transition-colors">
+              <Github size={20} />
+            </a>
+            <a href="#" className="hover:text-orange-200 transition-colors">
+              <Linkedin size={20} />
+            </a>
+            <a href="#" className="hover:text-orange-200 transition-colors">
+              <Mail size={20} />
+            </a>
+          </div></header>
 
       <main className="h-screen w-full">
       
         <Canvas camera={{ position: [0, 1.2, 5], fov: 30 }}>
+                   <ambientLight intensity={0.8} />
+          <directionalLight position={[5, 10, 5]} intensity={1.5} />
+          <ScrollControls pages={3}>
+            <Scroll>
+              <BB8Model />
+            </Scroll>
+      <Scroll>
                 <Text
         position={[0, 0.5, 0.1]} // x, y, z
         fontSize={0.5}
@@ -52,7 +64,8 @@ export default function App() {
     color="white"
   />
       </Text>
-    
+
+
       <Html position={[0, 0, 1]} center>
         
         <div className="w-2xl flex items-center justify-center flex-col">
@@ -76,12 +89,27 @@ export default function App() {
 
   </div>
 </Html>
+<Scroll html>
+  <section className="h-screen w-full ">
+   
+  </section>
+  <section className="h-screen w-screen ">
+    <h2 className="text-3xl font-bold">Section 2</h2>
+    <p>This is the content for section 2.</p>
+  </section>
+  <section className="h-screen w-full ">
+    <h2 className="text-3xl font-bold">Section 3</h2>
+    <p>This is the content for section 3.</p> 
+  </section>
+</Scroll>
+
+
       
       
 
-          <ambientLight intensity={0.8} />
-          <directionalLight position={[5, 10, 5]} intensity={1.5} />
-          <BB8Model />
+
+            </Scroll>
+          </ScrollControls> 
         </Canvas>
       </main>
 
